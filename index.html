@@ -57,7 +57,28 @@
     <section class="section">
       <h2>Abstract</h2>
       <div class="card"><div class="inner">
-        <p>To be continued</p>
+        <p>Traditional automatic drum transcription (ADT) directly per-
+          forms transcription from full-mixture music. This challeng-
+          ing task requires models to understand both the presence of
+          drums and distinguish between different drum pieces. This
+          study leverages advances in music source separation to pro-
+          pose a separation-then-transcription pipeline: a 5-stem multi-
+          track drum separator using latent diffusion generates individ-
+          ual drum stems, after which per-stem onset detection yields
+          class-wise pianorolls. The latent diffusion separator denoises
+          in the compact VAE latent and renders audio with a vocoder.
+          Additional onset/timbre auxiliaries guide the separator during
+          training to encourage percussive-aware representations.
+          In MDB and ENST datasets, this pipeline competes with
+          strong U-Net baseline (LarsNet), showing class-specific gains
+          while uniquely providing both accurate transcription and ed-
+          itable audio stems. Analysis also reveals that lower separation
+          reconstruction error doesn't always result in higher transcrip-
+          tion accuracy, motivating transcription-centric objectives in
+          separation models. This work demonstrates latent diffusion-
+          based separation offers a viable alternative to direct transcrip-
+          tion, achieving competitive accuracy while enabling down-
+          stream audio editing applications.</p>
       </div></div>
     </section>
 
