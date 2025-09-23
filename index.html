@@ -6,7 +6,6 @@
   <title>DSS→DT for ADT — Audio Demo</title>
   <meta name="description" content="Audio demo page for Drum Source Separation → Drum Transcription (ADT)." />
 
-  <!-- Social cards (把下面兩個網址換成你的最終 Pages 網址與圖片) -->
   <meta property="og:title" content="DSS→DT for ADT — Audio Demo" />
   <meta property="og:description" content="Five-stem separation + onset-based transcription demos." />
   <meta property="og:type" content="website" />
@@ -122,10 +121,10 @@
           <div class="card"><div class="inner"><div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/cymbals.mp3"></audio></div></div>
         </div>
       </div>
-      <h2>Example 1</h2>
+      <h2>Example 2</h2>
       <div class="card"><div class="inner">
-        <img src="assets/image/drummer_3_092_4_comparison.png" alt="pianoroll example 1" style="width:100%;border-radius:12px" loading="lazy">
-        <p class="small">Example 1 pianoroll visualization.</p>
+        <img src="assets/image/drummer_3_092_4_comparison.png" alt="pianoroll example 2" style="width:100%;border-radius:12px" loading="lazy">
+        <p class="small">Example 2 pianoroll visualization.</p>
       </div></div>
 
       <div class="section">
@@ -183,7 +182,6 @@
   </div>
 
   <script>
-    // 只允許同時間播放一個音檔
     const audios=[...document.querySelectorAll('audio')];
     audios.forEach(a=>a.addEventListener('play',()=>audios.forEach(b=>{if(b!==a)b.pause();})));
   </script>
