@@ -39,110 +39,142 @@
     .teaser{width:100%;border-bottom:1px solid rgba(255,255,255,.06);border-radius:var(--radius) var(--radius) 0 0;display:block}
     footer{margin:36px 0 16px;text-align:center;color:var(--muted)}
     pre{margin:0;font-size:13px;line-height:1.5}
+    /* Better reading experience for Abstract */
+    .prose{width:100%;max-width:unset;margin-left:0;margin-right:0}
+    .prose p{margin:0;line-height:1.75;text-align:justify;text-justify:inter-word;hyphens:auto;text-wrap:pretty}
+    .prose p + p{margin-top:.8em}
+    @media (max-width: 640px){.prose{max-width:unset}}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <img src="assets/teaser.png" alt="teaser" class="teaser" loading="lazy">
-      <div class="title">We will finish the demo page before 9/26</div>
-      <div class="meta">Jerry Hsu et al. — Demo Page</div>
-      <div class="badges">
+      <!-- <img src="assets/teaser.png" alt="teaser" class="teaser" loading="lazy"> -->
+      <div class="title">Separate-and-Detect: Unified Drum Transcription and Stem Generation via Latent Diffusion</div>
+      <div class="meta">Wei-Han Hsu, Chih-Cheng Chang, Bo-Yu Chen, Li Su, Yi-Hsuan Yang</div>
+      <!-- <div class="badges">
         <a class="badge" href="paper.pdf" target="_blank" rel="noopener">📄 Paper (PDF)</a>
         <a class="badge" href="https://github.com/ddman1101/dssdtm.github.io" target="_blank" rel="noopener">💻 Code</a>
         <a class="badge" href="#audio">🎧 Audio Demos</a>
-      </div>
+      </div> -->
     </header>
 
     <section class="section">
-      <h2>Abstract</h2>
+      <h1>Abstract</h1>
       <div class="card"><div class="inner">
-        <p>Traditional automatic drum transcription (ADT) directly per-
-          forms transcription from full-mixture music. This challeng-
-          ing task requires models to understand both the presence of
-          drums and distinguish between different drum pieces. This
-          study leverages advances in music source separation to pro-
-          pose a separation-then-transcription pipeline: a 5-stem multi-
-          track drum separator using latent diffusion generates individ-
-          ual drum stems, after which per-stem onset detection yields
-          class-wise pianorolls. The latent diffusion separator denoises
-          in the compact VAE latent and renders audio with a vocoder.
-          Additional onset/timbre auxiliaries guide the separator during
-          training to encourage percussive-aware representations.
-          In MDB and ENST datasets, this pipeline competes with
-          strong U-Net baseline (LarsNet), showing class-specific gains
-          while uniquely providing both accurate transcription and ed-
-          itable audio stems. Analysis also reveals that lower separation
-          reconstruction error doesn't always result in higher transcrip-
-          tion accuracy, motivating transcription-centric objectives in
-          separation models. This work demonstrates latent diffusion-
-          based separation offers a viable alternative to direct transcrip-
-          tion, achieving competitive accuracy while enabling down-
-          stream audio editing applications.</p>
+        <div class="prose">
+          <p>Traditional automatic drum transcription (ADT) directly performs transcription from full‑mixture music. This challenging task requires models to understand both the presence of drums and distinguish between different drum pieces. This study leverages advances in music source separation to propose a separation‑then‑transcription pipeline: a 5‑stem multitrack drum separator using latent diffusion generates individual drum stems, after which per‑stem onset detection yields class‑wise pianorolls. The latent diffusion separator denoises in the compact VAE latent and renders audio with a vocoder. Additional onset/timbre auxiliaries guide the separator during training to encourage percussive‑aware representations. In MDB and ENST datasets, this pipeline competes with strong U‑Net baseline (LarsNet), showing class‑specific gains while uniquely providing both accurate transcription and editable audio stems. Analysis also reveals that lower separation reconstruction error doesn’t always result in higher transcription accuracy, motivating transcription‑centric objectives in separation models. This work demonstrates latent diffusion‑based separation offers a viable alternative to direct transcription, achieving competitive accuracy while enabling downstream audio editing applications.</p>
+        </div>
       </div></div>
     </section>
 
-    <section class="section" id="audio">
-      <h2>Audio Demos — Example 1</h2>
-      <div class="grid cols-3">
-        <!-- Mixture vs Prediction vs GT -->
-        <div class="card"><div class="inner">
-          <div class="audio-title"><h3>Mixture</h3><span class="tag">ex01</span></div>
-          <audio preload="none" controls src="assets/audio/ex01_mixture.mp3"></audio>
-        </div></div>
-        <div class="card"><div class="inner">
-          <div class="audio-title"><h3>Prediction (ours)</h3><span class="tag">ex01</span></div>
-          <audio preload="none" controls src="assets/audio/ex01_pred.mp3"></audio>
-        </div></div>
-        <div class="card"><div class="inner">
-          <div class="audio-title"><h3>Reference / GT</h3><span class="tag">ex01</span></div>
-          <audio preload="none" controls src="assets/audio/ex01_gt.mp3"></audio>
-        </div></div>
+    <section class="section" id="adt-pianoroll">
+      <h2>Example 1</h2>
+      <div class="card"><div class="inner">
+        <img src="assets/image/enst_d3_146_30_40.png" alt="pianoroll example 1" style="width:100%;border-radius:12px" loading="lazy">
+        <p class="small">Example 1 pianoroll visualization.</p>
+      </div></div>
 
-        <!-- Stems -->
-        <div class="card"><div class="inner">
-          <div class="audio-title"><h3>Kick</h3><span class="tag">stem</span></div>
-          <audio preload="none" controls src="assets/audio/ex01_kick.mp3"></audio>
-        </div></div>
-        <div class="card"><div class="inner">
-          <div class="audio-title"><h3>Snare</h3><span class="tag">stem</span></div>
-          <audio preload="none" controls src="assets/audio/ex01_snare.mp3"></audio>
-        </div></div>
-        <div class="card"><div class="inner">
-          <div class="audio-title"><h3>Hi‑Hats</h3><span class="tag">stem</span></div>
-          <audio preload="none" controls src="assets/audio/ex01_hihats.mp3"></audio>
-        </div></div>
-        <div class="card"><div class="inner">
-          <div class="audio-title"><h3>Toms</h3><span class="tag">stem</span></div>
-          <audio preload="none" controls src="assets/audio/ex01_toms.mp3"></audio>
-        </div></div>
-        <div class="card"><div class="inner">
-          <div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div>
-          <audio preload="none" controls src="assets/audio/ex01_cymbals.mp3"></audio>
-        </div></div>
+      <div class="section">
+        <h3>Target</h3>
+        <div class="grid cols-3">
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Mixture</h3><span class="tag">mixture</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/mixture.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Kick</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/kick.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Snare</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/snare.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Toms</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/toms.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Hi‑Hats</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/hihats.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/cymbals.mp3"></audio></div></div>
+        </div>
       </div>
-      <p class="small">abcdefg <code>assets/audio/...</code>。</p>
-    </section>
 
-    <section class="section">
-      <h2>Method (Figure)</h2>
-      <div class="card"><div class="inner">
-        <img src="assets/method.png" alt="method diagram" style="width:100%;border-radius:12px" loading="lazy">
-        <p class="small">abcd</p>
-      </div></div>
-    </section>
+      <div class="section">
+        <h3>Prediction — ADTOF</h3>
+        <div class="grid cols-3">
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Mixture</h3><span class="tag">mixture</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/mixture.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Kick</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/kick.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Snare</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/snare.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Toms</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/toms.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Hi‑Hats</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/hihats.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/cymbals.mp3"></audio></div></div>
+        </div>
+      </div>
 
-    <section class="section" id="bibtex">
-      <h2>Citation</h2>
+      <div class="section">
+        <h3>Prediction — LarsNet</h3>
+        <div class="grid cols-3">
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Mixture</h3><span class="tag">mixture</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/mixture.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Kick</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/kick.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Snare</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/snare.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Toms</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/toms.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Hi‑Hats</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/hihats.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/cymbals.mp3"></audio></div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Prediction — MSG-LD (+OB & TB)</h3>
+        <div class="grid cols-3">
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Mixture</h3><span class="tag">mixture</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/mixture.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Kick</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/kick.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Snare</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/snare.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Toms</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/toms.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Hi‑Hats</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/hihats.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/cymbals.mp3"></audio></div></div>
+        </div>
+      </div>
+      <h2>Example 1</h2>
       <div class="card"><div class="inner">
-        <pre><code id="bib">@inproceedings{Hsu2025DSSDTT,
-  title={abcd},
-  author={Hsu, Wei-Han and ...},
-  booktitle={aaaa},
-  year={2025}
-}</code></pre>
-        <p class="small">abcd</p>
+        <img src="assets/image/drummer_3_092_4_comparison.png" alt="pianoroll example 1" style="width:100%;border-radius:12px" loading="lazy">
+        <p class="small">Example 1 pianoroll visualization.</p>
       </div></div>
+
+      <div class="section">
+        <h3>Target</h3>
+        <div class="grid cols-3">
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Mixture</h3><span class="tag">mixture</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/mixture.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Kick</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/kick.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Snare</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/snare.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Toms</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/toms.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Hi‑Hats</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/hihats.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/target/cymbals.mp3"></audio></div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Prediction — ADTOF</h3>
+        <div class="grid cols-3">
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Mixture</h3><span class="tag">mixture</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/mixture.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Kick</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/kick.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Snare</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/snare.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Toms</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/toms.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Hi‑Hats</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/hihats.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/adtof/cymbals.mp3"></audio></div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Prediction — LarsNet</h3>
+        <div class="grid cols-3">
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Mixture</h3><span class="tag">mixture</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/mixture.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Kick</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/kick.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Snare</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/snare.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Toms</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/toms.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Hi‑Hats</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/hihats.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/larsnet/cymbals.mp3"></audio></div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Prediction — MSG-LD (+OB & TB)</h3>
+        <div class="grid cols-3">
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Mixture</h3><span class="tag">mixture</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/mixture.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Kick</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/kick.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Snare</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/snare.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Toms</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/toms.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Hi‑Hats</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/hihats.mp3"></audio></div></div>
+          <div class="card"><div class="inner"><div class="audio-title"><h3>Cymbals</h3><span class="tag">stem</span></div><audio preload="none" controls src="assets/audio/demo_sample/msgld/cymbals.mp3"></audio></div></div>
+        </div>
+      </div>
     </section>
 
     <footer>
