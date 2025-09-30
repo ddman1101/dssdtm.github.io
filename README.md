@@ -10,7 +10,5 @@ This demo page showcases our separation-then-transcription pipeline for automati
   - Four 6‑audio sets per example: Target, Prediction—ADTOF, Prediction—LarsNet, Prediction—MSG‑LD (+OB & TB).
   - Each set includes Mixture + the five stems above.
 
-All audio files and images are under `assets/` (see `assets/audio/` for clips). Replace the placeholder files with your own to customize the page.
-
 ### Data note
 The drum sounds in our examples are rendered from one-shot samples extracted from the StemGMD dataset.
